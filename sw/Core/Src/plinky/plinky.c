@@ -55,18 +55,19 @@ extern UART_HandleTypeDef huart3;
 #else
 #define ASSERT assert
 #endif
-#include "core.h"
-#include "oled.h"
-#include "codec.h"
-#include "leds.h"
-#include "adc.h"
-#include "dac.h"
-#include "gfx.h"
-#include "spi.h"
-#include "tables.h"
-#include "audiointrin.h"
-#include "lfo.h"
-#include "enums.h"
+
+#include "../core.h"
+#include "defs/enums.h"
+#include "defs/lfo.h"
+#include "defs/tables.h"
+#include "low_level/adc.h"
+#include "low_level/audiointrin.h"
+#include "low_level/codec.h"
+#include "low_level/dac.h"
+#include "low_level/spi.h"
+#include "utils/oled.h"
+#include "utils/leds.h"
+#include "utils/gfx.h"
 
 
 const static float table_interp(const float *table, int x) { // 16 bit unsigned input, looked up in a 1024 entry table and linearly interpolated
@@ -293,14 +294,14 @@ enum {
 s8 enable_audio = EA_OFF;
 
 
-#include "flash.h"
-#include "params.h"
+#include "low_level/flash.h"
+#include "utils/params.h"
 #include "touch.h"
 #include "calib.h"
 #include "arp.h"
 #include "edit.h"
 
-#include "webusb.h"
+#include "../webusb.h"
 
 
 bool gatecv_trig = false;
@@ -687,7 +688,7 @@ extern const short wavetable[17][1031];
 #ifndef EMU
 __attribute__((section(".wavetableSection")))
 #endif
-#include "wavetable.h"
+#include "defs/wavetable.h"
 #ifdef _WIN32
 //#define clz __lzcnt
 u32 clz(u32 val) {
