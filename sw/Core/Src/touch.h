@@ -1136,7 +1136,8 @@ void update_finger(int srcidx) {
 		bool valid=oldf->pressure>700 && uif->pressure>700 && abs(uif->pos-oldf->pos)<60;
 		if (shift_down == SB_NOT_PRESSED)
 			valid&= oldbutton==midbutton && button==oldbutton;
-
+		if (editmode != EM_SAMPLE && button < 2)
+			button = 1 - button;
 		if (valid) {
 			if (shift_down != button) {
 				// check for ghosted presses

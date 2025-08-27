@@ -1163,10 +1163,14 @@ void editmode_ui(void) {
 		led_ram[8][SB_RECORD] = recording ? 255 : 0;
 		led_ram[8][SB_CLEAR] = 0;
 		led_ram[8][SB_PRESET] = (editmode == EM_PRESET) ? 255 : 0;;
-		led_ram[8][SB_PARAMSA] = (editmode == EM_PARAMSA) ? 255 : (editmode == EM_PLAY && ui_edit_param < P_LAST && (ui_edit_param % 12) < 6) ? flickery : 0;
-		led_ram[8][SB_PARAMSB] = (editmode == EM_PARAMSB) ? 255 : (editmode == EM_PLAY && ui_edit_param < P_LAST && (ui_edit_param % 12) >= 6) ? flickery : 0;
-		if (shift_down >= 0 && shift_down < 8)
-			led_ram[8][shift_down] = maxi(led_ram[8][shift_down], 128);
+		led_ram[8][SB_PARAMSA] = (editmode == EM_PARAMSB) ? 255 : (editmode == EM_PLAY && ui_edit_param < P_LAST && (ui_edit_param % 12) >= 6) ? flickery : 0;
+		led_ram[8][SB_PARAMSB] = (editmode == EM_PARAMSA) ? 255 : (editmode == EM_PLAY && ui_edit_param < P_LAST && (ui_edit_param % 12) < 6) ? flickery : 0;
+		if (shift_down >= 0 && shift_down < 8) {
+			u8 shift_led = shift_down;
+			if (shift_led < 2)
+				shift_led = 1 - shift_led;
+			led_ram[8][shift_led] = maxi(led_ram[8][shift_led], 128);
+		}
 	}
 //	for (int x = 0; x < 8; ++x) for (int y = 0; y < 9; ++y) led_ram[y][x] = 255; // all leds on test
 }
