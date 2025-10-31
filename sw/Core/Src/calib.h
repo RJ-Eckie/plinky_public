@@ -356,8 +356,8 @@ again:
 			int b = finger_cap(si*2 + 1);
 			int amin = finger_mincap(si * 2);
 			int bmin = finger_mincap(si * 2 + 1);
-			int amax = finger_maxcap(si * 2);
-			int bmax = finger_maxcap(si * 2 + 1);
+			//int amax = finger_maxcap(si * 2);
+			//int bmax = finger_maxcap(si * 2 + 1);
 			int rawpressure = finger_rawpressure(a-amin,b-bmin);
 			int prevrawp = prevrawpressure[si];
 			int rawpos = finger_rawpos(a,b);
@@ -396,7 +396,7 @@ again:
 					calibresults[si].pos[step] = state[si].pos[step] / state[si].weight[step];
 					calibresults[ti].pressure[step] = state[ti].pressure[step] / state[ti].weight[step];
 					calibresults[ti].pos[step] = state[ti].pos[step] / state[ti].weight[step];
-					if (step <= 4) {
+					/* if (step <= 4) {
 						errors &= ~(1 << si);
 						if (amax - amin < 1000) {
 							snprintf(helptext, sizeof(helptext), "!pad %d upper not conn\ncheck soldering", si + 1);
@@ -410,7 +410,7 @@ again:
 							snprintf(helptext, sizeof(helptext), "!pad %d shorted?\ncheck soldering", si + 1);
 							errors |= (1 << si);
 						}
-					}
+					} */
 					DebugLog("\n");
 					curstep[si]--;
 				}

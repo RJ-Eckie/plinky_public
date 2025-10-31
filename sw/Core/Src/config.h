@@ -63,7 +63,8 @@
 // 0.B1 - More RJ - lfo drawing is nicer; adc is not so smoothed?
 // 0.B2 - Pin detection for Plinky+ - boot the alternate display code for SSD1305 display driver
 // 0.B3 - slightly adjusted calib for Plinky+. Bugfixes from RJ: String envelope fix, No audio in sample edit mode fix, Fix excessive oscillator pitch spread for Midi notes
-#define VERSION2			  "v0.B3"
+// 0.B4 - this version takes out the soldering check for front panels that actually seemed to throw a good amount of false positives
+#define VERSION2			  "v0.B4"
 
 // the bootloader is manually copied to the file golden_bootloader.bin
 // makebin.py uses it to make a UF2 file containing the bootloader + latest firmware together
