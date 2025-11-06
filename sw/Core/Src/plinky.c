@@ -1,5 +1,4 @@
 #if defined(_WIN32) || defined(__APPLE__)
-#define EMU
 #pragma warning(disable:4244)
 #endif
 
